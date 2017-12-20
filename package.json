@@ -1,0 +1,16 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "An async shared instance wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/**/*.js | tap-spec"
+  },
+  "author": "Andy Burke <andy.burke@mailbox.earth>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "tap-spec": "^4.1.1",
+    "tape-async": "^2.3.0"
+  }
+}
