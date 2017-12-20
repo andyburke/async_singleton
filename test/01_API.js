@@ -1,17 +1,17 @@
 'use strict';
 
-const shared = require( '../index.js' );
+const async_singleton = require( '../index.js' );
 const tape = require( 'tape-async' );
 
 tape( 'API', t => {
-    t.ok( shared, 'module exports' );
-    t.equal( shared && typeof shared.create, 'function', 'exports create()' );
+    t.ok( async_singleton, 'module exports' );
+    t.equal( async_singleton && typeof async_singleton.create, 'function', 'exports create()' );
     t.end();
 } );
 
 tape( 'synchronous share instance', async t => {
     const foo = {};
-    const instance = shared.create( {
+    const instance = async_singleton.create( {
         create: () => {
             return foo;
         }
@@ -24,7 +24,7 @@ tape( 'synchronous share instance', async t => {
 
 tape( 'asynchronous share instance', async t => {
     const foo = {};
-    const instance = shared.create( {
+    const instance = async_singleton.create( {
         create: async () => {
             return new Promise( resolve => {
                 setTimeout( resolve.bind( null, foo ), 1000 );
@@ -40,7 +40,7 @@ tape( 'asynchronous share instance', async t => {
 tape( 'asynchronous gated share instance', async t => {
     const foo = {};
     let creation_count = 0;
-    const instance = shared.create( {
+    const instance = async_singleton.create( {
         create: async () => {
             ++creation_count;
             return new Promise( resolve => {
@@ -61,7 +61,7 @@ tape( 'asynchronous gated share instance', async t => {
 
 tape( 'asynchronous timeout share instance', async t => {
     const foo = {};
-    const instance = shared.create( {
+    const instance = async_singleton.create( {
         timeout: 1000,
         create: async () => {
             return new Promise( resolve => {

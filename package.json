@@ -1,7 +1,7 @@
 {
-  "name": "shared",
+  "name": "async_singleton",
   "version": "1.0.0",
-  "description": "An async shared instance wrapper",
+  "description": "An async singleton instance wrapper",
   "main": "index.js",
   "scripts": {
     "test": "tape test/**/*.js | tap-spec"
